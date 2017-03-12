@@ -241,7 +241,7 @@ public class PolygonEditor extends JPanel
      */
     public static void main(String[] args) {
         String fileName;
-        fileName = "data/stone.png";
+        fileName = "data/piranha.png";
       
         int firstCoordIndex = 0;
         float boxHeight = 4;

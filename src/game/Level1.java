@@ -83,7 +83,7 @@ public class Level1 extends GameLevel{
     }
     @Override
         public Vec2 startPosition() {
-        return new Vec2(35, -7);
+        return new Vec2(30, -7);
     }
     @Override
     public Vec2 doorPosition() {

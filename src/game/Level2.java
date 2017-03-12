@@ -10,8 +10,8 @@ import city.cs.engine.BoxShape;
 import city.cs.engine.Shape;
 import city.cs.engine.SolidFixture;
 import city.cs.engine.StaticBody;
-import city.cs.engine.World;
 import java.awt.Color;
+import static java.awt.Color.BLUE;
 import org.jbox2d.common.Vec2;
 
 /**
@@ -34,43 +34,53 @@ public class Level2 extends GameLevel {
         System.out.println("Collect all the flies and go to black ball");
         
         // make the ground
-        Shape groundShape = new BoxShape(35, 0.5f);
+        Shape groundShape = new BoxShape(5, 0.5f);
         Body ground = new StaticBody(this, groundShape);
         SolidFixture fix= new SolidFixture(ground, groundShape);
-        ground.setPosition(new Vec2(0, -11.5f));
+        ground.setPosition(new Vec2(30, -11.5f));
         ground.setFillColor(khaki);
         fix.setFriction(1);
         
+        Body piranha = new Piranha(this);
+        piranha.setPosition(new Vec2(0,-8));
+        
+        
+        Shape waterBottom = new BoxShape(30,1);
+        Body water = new StaticBody(this, waterBottom);
+        water.setPosition(new Vec2(0,-12));
+        water.setFillColor(BLUE);
+        
 
         // make a platform
-        Shape platformShape = new BoxShape(6, 0.5f);
+        Shape platformShape = new BoxShape(3, 0.5f);
         Body platform1 = new StaticBody(this, platformShape);
-        platform1.setPosition(new Vec2(-8, 5.5f));
+        platform1.setPosition(new Vec2(15, -5.5f));
         
         Shape platformShape2 = new BoxShape(2, 0.5f);
         Body platform2 = new StaticBody(this, platformShape2);
-        platform2.setPosition(new Vec2(10, 0));
+        platform2.setPosition(new Vec2(-25, 2));
         
-         
-        //fork curvy
-        Body curvyfork = new CurvyFork(this);
-        curvyfork.setPosition(new Vec2(6,-6));
+        for (int i = 0; i < 3; i++) {
+            Body platform= new Platform(this);
+            platform.setPosition(new Vec2(i*8-10,i*-1.1f));
+            
+        } 
         
    
         //fly
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i < 4; i++) {
             Body fly= new Fly(this);
-            fly.setPosition(new Vec2(i*6-25,i*-1.1f));
+            fly.setPosition(new Vec2(i*8-15,-i*2f+5.2f));
             fly.addCollisionListener(new Eat(getPlayer()));
         }
         
         //stork
         Body stork = new Stork(this);
-        stork.setPosition(new Vec2(-9,0));
+        stork.setPosition(new Vec2(-9,10));
         stork.addCollisionListener(new EnemyCollision(getPlayer()));
         
         Body stork2 = new Stork(this);
-        stork2.setPosition(new Vec2(5,0));
+        stork2.setPosition(new Vec2(5,7));
         stork2.addCollisionListener(new EnemyCollision(getPlayer()));
         
         //wall
@@ -84,14 +94,14 @@ public class Level2 extends GameLevel {
     }
     @Override
     public Vec2 startPosition() {
-        return new Vec2(-27,-2);
+        return new Vec2(27,-2);
     }
     @Override
     public Vec2 doorPosition() {
-        return new Vec2(-25,-2);
+        return new Vec2(-25,12);
     }
     @Override
     public boolean isCompleted() {
-        return getPlayer().getFlyCount() == 5;
+        return getPlayer().getFlyCount() == 3;
     }
 }

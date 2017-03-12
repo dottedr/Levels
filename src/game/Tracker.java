@@ -5,15 +5,15 @@ import org.jbox2d.common.Vec2;
 
 /**
  * Pan the view to follow a particular body.
- */
+
 public class Tracker implements StepListener {
-    /** The view */
+    
     private WorldView view;
 
-    /** The body */
-    private Body body;
+   
+    private Walker body;
 
-    public Tracker(WorldView view, Body body) {
+    public Tracker(WorldView view, Walker body) {
         this.view = view;
         this.body = body;
     }
@@ -28,3 +28,4 @@ public class Tracker implements StepListener {
     }
     
 }
+ */

@@ -16,13 +16,24 @@ import javax.swing.ImageIcon;
  * @author sabinaadamska
  */
 public class MyView extends UserView {
+
     private Image background;
-    public MyView(World world, int width, int height) {
+    private Game game;
+
+    public MyView(World world, Game game, int width, int height) {
         super(world, width, height);
         background = new ImageIcon("data/background.jpg").getImage();
+        this.game = game;
     }
-     
+
+
+
     @Override
+    protected void paintForeground(Graphics2D g) {
+        g.drawString("Score: " + game.getPlayer().getFlyCount(), 10, 20);
+    }
+    
+        @Override
     protected void paintBackground(Graphics2D g) {
         g.drawImage(background, 0, 0, this);
     }

@@ -1,9 +1,8 @@
-
-
 package game;
 
 import city.cs.engine.*;
 import java.awt.BorderLayout;
+import java.awt.Container;
 
 import javax.swing.JFrame;
 
@@ -12,26 +11,31 @@ import javax.swing.JFrame;
  */
 public class Game {
 
-    /** The World in which the bodies move and interact. */
+    /**
+     * The World in which the bodies move and interact.
+     */
     private GameLevel world;
+    private Pepe pepe;
 
-    /** A graphical display of the world (a specialised JPanel). */
+    /**
+     * A graphical display of the world (a specialised JPanel).
+     */
     private UserView view;
-    
     private int level;
     private KeyboardEvents controller;
     private MouseEvents mouseController;
-    
-    private SoundClip gameMusic;
-        
 
-    /** Initialise a new Demo. */
+    private SoundClip gameMusic;
+
+    /**
+     * Initialise a new Demo.
+     */
     public Game() {
-       
+
         // make the world
         //world = new GameWorld();
-        level = 1;
-        world = new Level1();
+        level = 2;
+        world = new Level2();
         world.populate(this);
         /*
         try {
@@ -40,28 +44,29 @@ public class Game {
         } catch (UnsupportedAudioFileException|IOException|LineUnavailableException e) {
             System.out.println(e);
         }  */
-
-
-        // make a view, TODO:later change to MyView
-        view = new MyView(world, 500, 500);
         
-        //mini view
-        UserView wideView = new UserView(world, 500, 100);
+        //whole window
+         JFrame frame = new JFrame("Pepe game");
+
+        
+        view = new MyView(world,this, 1300, 500);
+
+        //add bottom panel
+        UserView wideView = new UserView(world, 1300, 100);
         wideView.setZoom(4);
-     
-        
-        //view.addKeyListener(new KeyboardEvents(world.getPlayer())); 
-
-        // uncomment this to draw a 1-metre grid over the view
-        //view.setGridResolution(1);
-
-        // add some mouse actions
-        // add this to the view, so coordinates are relative to the view
-        view.addMouseListener(new MouseEvents(world.getPlayer()));
-
-        // display the view in a frame
-        final JFrame frame = new JFrame("Encapsulation Demo");
         frame.add(wideView, BorderLayout.SOUTH);
+                 //add side panel       
+        Container sidePanel = new ControlPanel(world,pepe);
+        frame.add(sidePanel, BorderLayout.EAST);
+
+
+        //window.pack determines the size after having a look at window.add(buttons, BorderLayout.WEST);
+        //frame.pack();
+        //.setVisible(true);
+
+       
+        // uncomment this to draw a 1-metre grid over the view
+        view.setGridResolution(1);
 
         // quit the application when the game window is closed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,15 +80,14 @@ public class Game {
         // make the window visible
         frame.setVisible(true);
         frame.requestFocus();
-        //frame.addKeyListener(new KeyboardEvents(world.getPlayer()));
-        //frame.addMouseListener(new MouseEvents(world.getPlayer()));
+        
         //uncomment this to make a debugging view
         //JFrame debugView = new DebugViewer(world, 1100, 500);
-        world.addStepListener(new Tracker(view,world.getPlayer()));
-        
+        //world.addStepListener(new Tracker(view, world.getPlayer()));
+        //instatiate event to switch the keyboard control to the new player
         controller = new KeyboardEvents(world.getPlayer());
         frame.addKeyListener(controller);
-        
+
         mouseController = new MouseEvents(world.getPlayer());
         frame.addMouseListener(mouseController);
 
@@ -91,24 +95,25 @@ public class Game {
         world.start();
     }
 
- 
-
     public Pepe getPlayer() {
         return world.getPlayer();
     }
-    
-    /** Is the current level of the game finished? */
+
+    /**
+     * Is the current level of the game finished?
+     */
     public boolean isCurrentLevelCompleted() {
         return world.isCompleted();
     }
+
     public void goNextLevel() {
         world.stop();
-        if (level == 2) {
+        if (level == 3) {
             System.exit(0);
         } else {
             level++;
             // get a new world
-            world = new Level2();
+            world = new Level3();
             // fill it with bodies
             world.populate(this);
             // switch the keyboard control to the new player
@@ -120,11 +125,12 @@ public class Game {
             world.start();
         }
     }
-      /** Run the demo. */
+
+    /**
+     * Run the demo.
+     */
     public static void main(String[] args) {
         new Game();
     }
-    
 
 }
-
