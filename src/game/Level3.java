@@ -41,8 +41,21 @@ public class Level3 extends GameLevel{
         ground.setFillColor(khaki);
         fix.setFriction(1);
         
+                //fork curvy
+        Body curvyfork2 = new CurvyFork(this);
+        curvyfork2.setPosition(new Vec2(-6,1000));
+        curvyfork2.addCollisionListener(new PiranhaHit(getPlayer()));
+        
         Body piranha = new Piranha(this);
         piranha.setPosition(new Vec2(0,-8));
+        
+        Body curvyfork = new CurvyFork(this);
+        curvyfork.setPosition(new Vec2(6,300));
+        curvyfork.addCollisionListener(new PiranhaHit(getPlayer()));
+        
+                Body curvyfork3 = new CurvyFork(this);
+        curvyfork3.setPosition(new Vec2(25,100));
+        curvyfork3.addCollisionListener(new PiranhaHit(getPlayer()));
         
         
         Shape waterBottom = new BoxShape(30,1);
@@ -54,15 +67,18 @@ public class Level3 extends GameLevel{
         // make a platform
         Shape platformShape = new BoxShape(3, 0.5f);
         Body platform1 = new StaticBody(this, platformShape);
-        platform1.setPosition(new Vec2(15, -5.5f));
+        platform1.setPosition(new Vec2(-17, -4f));
         
         Shape platformShape2 = new BoxShape(2, 0.5f);
         Body platform2 = new StaticBody(this, platformShape2);
-        platform2.setPosition(new Vec2(-25, 2));
+        platform2.setPosition(new Vec2(22, -4));
         
-        for (int i = 0; i < 3; i++) {
+        Body platform3 = new StaticBody(this, platformShape2);
+        platform3.setPosition(new Vec2(-25, 3.5f));
+        
+        for (int i = 0; i < 2; i++) {
             Body platform= new Platform(this);
-            platform.setPosition(new Vec2(i*8-10,i*-1.1f));
+            platform.setPosition(new Vec2(i*10-2,i*6f-2.1f));
             
         } 
         
@@ -73,21 +89,6 @@ public class Level3 extends GameLevel{
             fly.setPosition(new Vec2(i*8-15,-i*2f+5.2f));
             fly.addCollisionListener(new Eat(getPlayer()));
         }
-        
-        //stork
-        Body stork = new Stork(this);
-        stork.setPosition(new Vec2(-9,10));
-        stork.addCollisionListener(new EnemyCollision(getPlayer()));
-        
-        Body stork2 = new Stork(this);
-        stork2.setPosition(new Vec2(5,7));
-        stork2.addCollisionListener(new EnemyCollision(getPlayer()));
-        
-        //wall
-        Shape obstacleWallShape = new BoxShape(0.5f, 5);
-        Body obstacleWall = new StaticBody(this, obstacleWallShape);
-        obstacleWall.setPosition(new Vec2(-21, -6.5f));
-        obstacleWall.setFillColor(khaki);
         
 
 
@@ -102,7 +103,7 @@ public class Level3 extends GameLevel{
     }
     @Override
     public boolean isCompleted() {
-        return getPlayer().getFlyCount() == 5;
+        return getPlayer().getFlyCount() == 3;
     }
 }
 

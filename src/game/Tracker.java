@@ -5,7 +5,7 @@ import org.jbox2d.common.Vec2;
 
 /**
  * Pan the view to follow a particular body.
-
+*/
 public class Tracker implements StepListener {
     
     private WorldView view;
@@ -28,4 +28,3 @@ public class Tracker implements StepListener {
     }
     
 }
- */

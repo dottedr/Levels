@@ -51,9 +51,7 @@ public class Level1 extends GameLevel{
         platform2.setPosition(new Vec2(10, 0));
         
          
-        //fork curvy
-        Body curvyfork = new CurvyFork(this);
-        curvyfork.setPosition(new Vec2(6,-6));
+
         
    
         //fly

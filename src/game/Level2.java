@@ -21,6 +21,8 @@ import org.jbox2d.common.Vec2;
 public class Level2 extends GameLevel {
     //private Pepe pepe;
     public Color khaki,magic;
+    public Vec2 g= new Vec2(22, 0);
+
     
      
 
@@ -43,6 +45,13 @@ public class Level2 extends GameLevel {
         
         Body piranha = new Piranha(this);
         piranha.setPosition(new Vec2(0,-8));
+        piranha.addCollisionListener(new PiranhaHit(getPlayer()));
+        
+        Body piranha2 = new Piranha(this);
+        piranha2.setPosition(new Vec2(-33,-8));
+        piranha2.addCollisionListener(new PiranhaHit(getPlayer()));
+        
+        
         
         
         Shape waterBottom = new BoxShape(30,1);
@@ -58,7 +67,7 @@ public class Level2 extends GameLevel {
         
         Shape platformShape2 = new BoxShape(2, 0.5f);
         Body platform2 = new StaticBody(this, platformShape2);
-        platform2.setPosition(new Vec2(-25, 2));
+        platform2.setPosition(new Vec2(-25, 0));
         
         for (int i = 0; i < 3; i++) {
             Body platform= new Platform(this);
@@ -76,18 +85,13 @@ public class Level2 extends GameLevel {
         
         //stork
         Body stork = new Stork(this);
-        stork.setPosition(new Vec2(-9,10));
+        stork.setPosition(new Vec2(-9,12));
         stork.addCollisionListener(new EnemyCollision(getPlayer()));
         
         Body stork2 = new Stork(this);
         stork2.setPosition(new Vec2(5,7));
         stork2.addCollisionListener(new EnemyCollision(getPlayer()));
         
-        //wall
-        Shape obstacleWallShape = new BoxShape(0.5f, 5);
-        Body obstacleWall = new StaticBody(this, obstacleWallShape);
-        obstacleWall.setPosition(new Vec2(-21, -6.5f));
-        obstacleWall.setFillColor(khaki);
         
 
 

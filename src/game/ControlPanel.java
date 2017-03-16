@@ -19,9 +19,11 @@ public class ControlPanel extends javax.swing.JPanel {
      */
     private World world;
     private Pepe pepe;
-    public ControlPanel(World world, Pepe pepe) {
+    private Game game;
+    public ControlPanel(World world, Pepe pepe,Game game) {
         this.world=world;
         this.pepe=pepe;
+        this.game=game;
         initComponents();
     }
 
@@ -34,22 +36,13 @@ public class ControlPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonStart = new javax.swing.JButton();
-        buttonPause = new javax.swing.JButton();
+        buttonSneakPeek = new javax.swing.JButton();
         quitButton = new javax.swing.JButton();
-        progressBar = new javax.swing.JProgressBar();
 
-        buttonStart.setText("Start       ");
-        buttonStart.addActionListener(new java.awt.event.ActionListener() {
+        buttonSneakPeek.setText("SneekPeek");
+        buttonSneakPeek.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonStartActionPerformed(evt);
-            }
-        });
-
-        buttonPause.setText("Pause     ");
-        buttonPause.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonPauseActionPerformed(evt);
+                buttonSneakPeekActionPerformed(evt);
             }
         });
 
@@ -60,42 +53,29 @@ public class ControlPanel extends javax.swing.JPanel {
             }
         });
 
-        progressBar.setStringPainted(true);
-        progressBar.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                progressBarPropertyChange(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonPause)
-                            .addComponent(buttonStart)
-                            .addComponent(quitButton))
-                        .addGap(34, 34, 34))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(quitButton)
+                        .addGap(76, 76, 76))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(buttonSneakPeek)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(buttonStart)
-                .addGap(18, 18, 18)
-                .addComponent(buttonPause)
-                .addGap(18, 18, 18)
+                .addGap(54, 54, 54)
+                .addComponent(buttonSneakPeek)
+                .addGap(30, 30, 30)
                 .addComponent(quitButton)
-                .addGap(46, 46, 46)
-                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -104,26 +84,14 @@ public class ControlPanel extends javax.swing.JPanel {
          System.exit(0);
     }//GEN-LAST:event_quitButtonActionPerformed
 
-    private void buttonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonStartActionPerformed
+    private void buttonSneakPeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSneakPeekActionPerformed
         // TODO add your handling code here:
-        world.start();
-    }//GEN-LAST:event_buttonStartActionPerformed
-
-    private void buttonPauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPauseActionPerformed
-        // TODO add your handling code here:
-        world.stop();
-    }//GEN-LAST:event_buttonPauseActionPerformed
-
-    private void progressBarPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_progressBarPropertyChange
-        // TODO add your handling code here:
-        progressBar.setValue(12);
-    }//GEN-LAST:event_progressBarPropertyChange
+            game.sneakPeek();
+    }//GEN-LAST:event_buttonSneakPeekActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonPause;
-    private javax.swing.JButton buttonStart;
-    private javax.swing.JProgressBar progressBar;
+    private javax.swing.JButton buttonSneakPeek;
     private javax.swing.JButton quitButton;
     // End of variables declaration//GEN-END:variables
 }
