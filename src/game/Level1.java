@@ -10,6 +10,7 @@ import city.cs.engine.BoxShape;
 import city.cs.engine.Shape;
 import city.cs.engine.SolidFixture;
 import city.cs.engine.StaticBody;
+import city.cs.engine.World;
 import java.awt.Color;
 import org.jbox2d.common.Vec2;
 
@@ -20,17 +21,38 @@ import org.jbox2d.common.Vec2;
 public class Level1 extends GameLevel{
     public Color khaki,magic;
    // private Pepe pepe;
+   // public Bullet bullet;
     
     
     @Override
     public void populate(Game game){
         super.populate(game);
         khaki= new Color(105,94,24);
+
+        //fly
+        for (int i = 0; i < 10; i++) {
+            Body fly= new Fly(this);
+            fly.setPosition(new Vec2(i*6-25,i*-1.1f));
+            fly.addCollisionListener(new Eat(getPlayer()));
+        }
+        //bullet= new Bullet(this);
         
-        /******************HOW TO MOVE***********************/
-        System.out.println("Use keys A ans S to walk, click left mouse button to jump");
-        System.out.println("Storks are your enemies, flies are your food.");
-        System.out.println("Collect all the flies and go to black ball");
+       
+        
+        //stork
+        Body stork = new Stork(this);
+        stork.setPosition(new Vec2(-9,0));
+        stork.addCollisionListener(new EnemyCollision(getPlayer()));
+        
+        Body stork2 = new Stork(this);
+        stork2.setPosition(new Vec2(5,0));
+        stork2.addCollisionListener(new EnemyCollision(getPlayer()));
+        
+        //wall
+        Shape obstacleWallShape = new BoxShape(0.5f, 5);
+        Body obstacleWall = new StaticBody(this, obstacleWallShape);
+        obstacleWall.setPosition(new Vec2(-21, -6.5f));
+        obstacleWall.setFillColor(khaki);
         
         // make the ground
         Shape groundShape = new BoxShape(35, 0.5f);
@@ -50,31 +72,6 @@ public class Level1 extends GameLevel{
         Body platform2 = new StaticBody(this, platformShape2);
         platform2.setPosition(new Vec2(10, 0));
         
-         
-
-        
-   
-        //fly
-        for (int i = 0; i < 10; i++) {
-            Body fly= new Fly(this);
-            fly.setPosition(new Vec2(i*6-25,i*-1.1f));
-            fly.addCollisionListener(new Eat(getPlayer()));
-        }
-        
-        //stork
-        Body stork = new Stork(this);
-        stork.setPosition(new Vec2(-9,0));
-        stork.addCollisionListener(new EnemyCollision(getPlayer()));
-        
-        Body stork2 = new Stork(this);
-        stork2.setPosition(new Vec2(5,0));
-        stork2.addCollisionListener(new EnemyCollision(getPlayer()));
-        
-        //wall
-        Shape obstacleWallShape = new BoxShape(0.5f, 5);
-        Body obstacleWall = new StaticBody(this, obstacleWallShape);
-        obstacleWall.setPosition(new Vec2(-21, -6.5f));
-        obstacleWall.setFillColor(khaki);
         
 
 

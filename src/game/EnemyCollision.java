@@ -24,7 +24,7 @@ public class EnemyCollision implements CollisionListener {
     public void collide(CollisionEvent e){
         if(e.getOtherBody() == pepe){
             pepe.decrementHP();
-            e.getReportingBody().setAngleDegrees(-18);
+            e.getReportingBody().rotateDegrees(-18);
         }
 
     }

@@ -5,11 +5,9 @@
  */
 package game;
 
-import city.cs.engine.*;
-import city.cs.engine.Walker;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import org.jbox2d.common.Vec2;
 
 /**
  *
@@ -17,23 +15,23 @@ import java.awt.event.MouseEvent;
  */
 public class MouseEvents extends MouseAdapter {
 
-    private Walker body;
-    private static final float JUMPING_SPEED = 12;
+    private Bullet bullet;
+    //private static final float JUMPING_SPEED = 12;
 
-    public MouseEvents(Walker body) {
-
-        this.body = body;
+    public MouseEvents(Bullet bullet) {
+        this.bullet = bullet;
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-
-        //System.out.print("DSDSDDS"+p);
-        body.jump(JUMPING_SPEED);
+        System.out.println(bullet);
+        //bullet.setPosition(new Vec2(26,5));
+        bullet.setLinearVelocity(new Vec2(-10, 0));
+        
 
     }
 
-    public void setBody(Walker body) {
-        this.body = body;
+    public void setBody(Bullet bullet) {
+        this.bullet = bullet;
     }
 }

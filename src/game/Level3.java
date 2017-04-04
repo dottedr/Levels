@@ -28,42 +28,38 @@ public class Level3 extends GameLevel{
     public void populate(Game game){
         super.populate(game);
         khaki= new Color(105,94,24);
-        /******************HOW TO MOVE***********************/
-        System.out.println("Use keys A ans S to walk, click left mouse button to jump");
-        System.out.println("Storks are your enemies, flies are your food.");
-        System.out.println("Collect all the flies and go to black ball");
         
-        // make the ground
-        Shape groundShape = new BoxShape(5, 0.5f);
-        Body ground = new StaticBody(this, groundShape);
-        SolidFixture fix= new SolidFixture(ground, groundShape);
-        ground.setPosition(new Vec2(30, -11.5f));
-        ground.setFillColor(khaki);
-        fix.setFriction(1);
-        
-                //fork curvy
-        Body curvyfork2 = new CurvyFork(this);
-        curvyfork2.setPosition(new Vec2(-6,1000));
-        curvyfork2.addCollisionListener(new PiranhaHit(getPlayer()));
-        
+//        //fork curvy
+//        Body curvyfork = new CurvyFork(this);
+//        curvyfork.setPosition(new Vec2(6,300));
+//        curvyfork.addCollisionListener(new PiranhaHit(getPlayer()));
+//        
+//        //fork curvy
+//        Body curvyfork2 = new CurvyFork(this);
+//        curvyfork2.setPosition(new Vec2(-6,1000));
+//        curvyfork2.addCollisionListener(new PiranhaHit(getPlayer()));
+//        
+//        //fork curvy
+//        Body curvyfork3 = new CurvyFork(this);
+//        curvyfork3.setPosition(new Vec2(25,100));
+//        curvyfork3.addCollisionListener(new PiranhaHit(getPlayer()));
+//        
         Body piranha = new Piranha(this);
         piranha.setPosition(new Vec2(0,-8));
+        piranha.addCollisionListener(new PiranhaFight(bullet));
         
-        Body curvyfork = new CurvyFork(this);
-        curvyfork.setPosition(new Vec2(6,300));
-        curvyfork.addCollisionListener(new PiranhaHit(getPlayer()));
-        
-                Body curvyfork3 = new CurvyFork(this);
-        curvyfork3.setPosition(new Vec2(25,100));
-        curvyfork3.addCollisionListener(new PiranhaHit(getPlayer()));
-        
+        //fly
+        for (int i = 1; i < 4; i++) {
+            Body fly= new Fly(this);
+            fly.setPosition(new Vec2(i*8-15,-i*2f+5.2f));
+            fly.addCollisionListener(new Eat(getPlayer()));
+        }
         
         Shape waterBottom = new BoxShape(30,1);
         Body water = new StaticBody(this, waterBottom);
         water.setPosition(new Vec2(0,-12));
         water.setFillColor(BLUE);
         
-
         // make a platform
         Shape platformShape = new BoxShape(3, 0.5f);
         Body platform1 = new StaticBody(this, platformShape);
@@ -78,21 +74,18 @@ public class Level3 extends GameLevel{
         
         for (int i = 0; i < 2; i++) {
             Body platform= new Platform(this);
-            platform.setPosition(new Vec2(i*10-2,i*6f-2.1f));
-            
+            platform.setPosition(new Vec2(i*10-2,i*6f-2.1f));    
         } 
-        
-   
-        //fly
-        for (int i = 1; i < 4; i++) {
-            Body fly= new Fly(this);
-            fly.setPosition(new Vec2(i*8-15,-i*2f+5.2f));
-            fly.addCollisionListener(new Eat(getPlayer()));
-        }
-        
-
-
+         
+        // make the ground
+        Shape groundShape = new BoxShape(5, 0.5f);
+        Body ground = new StaticBody(this, groundShape);
+        SolidFixture fix= new SolidFixture(ground, groundShape);
+        ground.setPosition(new Vec2(30, -11.5f));
+        ground.setFillColor(khaki);
+        fix.setFriction(1);
     }
+    
     @Override
     public Vec2 startPosition() {
         return new Vec2(27,-2);

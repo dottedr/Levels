@@ -14,7 +14,8 @@ import javax.swing.event.ChangeListener;
  * @author sabinaadamska
  */
 public class InfoLabel extends JLabel implements ChangeListener {
-        private Game game;
+    //private Game game;
+    
     public InfoLabel(Game game){
     }
 

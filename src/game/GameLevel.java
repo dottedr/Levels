@@ -16,9 +16,12 @@ import org.jbox2d.common.Vec2;
 public abstract class GameLevel extends World{
     private Pepe player;
     public Color magic; 
-   
+   public Bullet bullet;
     public Pepe getPlayer(){
         return player;
+    }
+      Bullet getBullet() {
+        return bullet;
     }
     public void populate(Game game){
         magic= new Color(11,0,12);
@@ -28,9 +31,12 @@ public abstract class GameLevel extends World{
         portal.setPosition(doorPosition());
         portal.addCollisionListener(new PortalListener(game));
         portal.setFillColor(magic);
-        
+        bullet = new Bullet(this);
+        bullet.setPosition(new Vec2(25,0));
     }
     public abstract Vec2 startPosition();
     public abstract Vec2 doorPosition();
     public abstract boolean isCompleted();
+
+  
 }

@@ -241,10 +241,10 @@ public class PolygonEditor extends JPanel
      */
     public static void main(String[] args) {
         String fileName;
-        fileName = "data/piranha.png";
+        fileName = "data/bullet.png";
       
         int firstCoordIndex = 0;
-        float boxHeight = 4;
+        float boxHeight = 3;
         if (args.length > 0) {
             try {
                 String[] test = args[0].split("[, ]+");

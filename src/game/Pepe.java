@@ -12,7 +12,7 @@ import city.cs.engine.Shape;
 import city.cs.engine.SolidFixture;
 import city.cs.engine.Walker;
 import city.cs.engine.World;
-import city.cs.engine.WorldView;
+import org.jbox2d.common.Vec2;
 
 /**
  *
@@ -31,7 +31,7 @@ public class Pepe extends Walker {
         super(world);
         flyCount = 0;
         hp = 100;
-        win = "GG mate, you came to the holy grail for froggies.";
+
         lost = "You have lost!";
 
         shape = new PolygonShape(-0.45f, -0.32f, -1.66f, -0.39f, -2.21f, -0.63f, -2.23f, -0.87f, -1.3f, -1.23f);
@@ -53,37 +53,20 @@ public class Pepe extends Walker {
         return hp;
     }
 
-    public String getWin() {
-        return win;
-        
-    }
-    
-    
+
     public void incrementFlyCount() {
         flyCount++;
-        //System.out.println("You collected: " + flyCount + " flies");
+
     }
 
     public void decrementHP() {
         hp = hp - 20;
-        if (hp == 40) {
-            System.out.println("Outch! HP left " + hp + "/60");
-        } else if (hp == 20) {
-            System.out.println("Be careful! One more time and stork is gonna eat you HP left " + hp + "/60");
-        } else if (hp == 0) {
-            this.printLost();
-            //world.stop();
-        }
+
     }
 
-    public void printWin() {
-        System.out.println(win);
+    public String printLost() {
+        return lost;
     }
-    
-    public String printLost(){
-       return lost;
-    }
-    
 
     public int getFlyCount() {
         return flyCount;
@@ -92,4 +75,10 @@ public class Pepe extends Walker {
     public Shape getShape() {
         return shape;
     }
+
+    public Vec2 position() {
+        return this.getPosition();
+
+    }
+
 }

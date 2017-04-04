@@ -13,7 +13,8 @@ import org.jbox2d.common.Vec2;
  * @author sabinaadamska
  */
 public class Piranha extends DynamicBody {
-        Vec2 g= new Vec2(10, 0);
+
+    Vec2 g = new Vec2(10, 0);
 
     public Piranha(World w) {
         super(w);
@@ -23,13 +24,11 @@ public class Piranha extends DynamicBody {
         this.setLinearVelocity(g);
         
 
+//        if (this.getPosition().x > -20) {
+//            this.setLinearVelocity(new Vec2(10, 0));
+//        } else if (this.getPosition().x < 15) {
+//            this.setLinearVelocity(new Vec2(-10, 0));
+//        }
     }
-    
 
 }
-/*        
-        if(this.getPosition().x>-20){
-            this.setLinearVelocity(new Vec2(10,0));
-        }else if(this.getPosition().x<15){
-            this.setLinearVelocity(new Vec2(-10,0));
-*/

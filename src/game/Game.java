@@ -19,6 +19,7 @@ public class Game {
      */
     private GameLevel world;
     private Pepe pepe;
+    public Bullet bullet;
 
     /**
      * A graphical display of the world (a specialised JPanel).
@@ -30,6 +31,8 @@ public class Game {
 
     private SoundClip gameMusic;
 
+    JFrame frame;
+
     /**
      * Initialise a new Demo.
      */
@@ -40,30 +43,27 @@ public class Game {
         level = 1;
         world = new Level1();
         world.populate(this);
-        
+        bullet = world.getBullet();
+
         try {
-            gameMusic = new SoundClip("data/Pan Volf - Holding U.wav");   // Open an audio input stream
+            gameMusic = new SoundClip("data/Mortal Kombat Soundtrack.wav");   // Open an audio input stream
             gameMusic.loop();  // Set it to continous playback (looping)
-        } catch (UnsupportedAudioFileException|IOException|LineUnavailableException e) {
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             System.out.println(e);
-        }  
-
+        }
+        //this.music();
         //whole window
-        JFrame frame = new JFrame("Pepe game");
-
-        view = new MyView(world, this, 1300, 500);
+        frame = new JFrame("Pepe game");
+        view = new MyView(world, this, 650, 500);
 
         //add bottom panel
-        UserView wideView = new UserView(world, 1300, 100);
-        wideView.setZoom(4);
-        frame.add(wideView, BorderLayout.SOUTH);
+        //UserView wideView = new UserView(world, 1300, 100);
+        //wideView.setZoom(4);
+        //frame.add(wideView, BorderLayout.SOUTH);
         //add side panel       
         Container sidePanel = new ControlPanel(world, pepe, this);
         frame.add(sidePanel, BorderLayout.EAST);
 
-        //window.pack determines the size after having a look at window.add(buttons, BorderLayout.WEST);
-        //frame.pack();
-        //.setVisible(true);
         // uncomment this to draw a 1-metre grid over the view
         //view.setGridResolution(1);
         // quit the application when the game window is closed
@@ -79,22 +79,26 @@ public class Game {
         frame.setVisible(true);
         frame.requestFocus();
 
-        //uncomment this to make a debugging view
         //JFrame debugView = new DebugViewer(world, 1100, 500);
-        //world.addStepListener(new Tracker(view, world.getPlayer()));
+        world.addStepListener(new Tracker(view, world.getPlayer()));
         //instatiate event to switch the keyboard control to the new player
         controller = new KeyboardEvents(world.getPlayer());
         frame.addKeyListener(controller);
 
-        mouseController = new MouseEvents(world.getPlayer());
+        mouseController = new MouseEvents(bullet);
         frame.addMouseListener(mouseController);
 
         // start!
         world.start();
+
     }
 
     public Pepe getPlayer() {
         return world.getPlayer();
+    }
+
+    public Bullet getBullet() {
+        return world.getBullet();
     }
 
     /**
@@ -109,80 +113,44 @@ public class Game {
         if (level == 4) {
             System.exit(0);
 
-        } 
-        else if (level==1){
+        } else if (level == 1) {
             level++;
             // get a new world
             world = new Level2();
             // fill it with bodies
             world.populate(this);
+            mouseController.setBody(bullet);
+            frame.addMouseListener(mouseController);
             // switch the keyboard control to the new player
+            frame.addKeyListener(controller);
             controller.setBody(world.getPlayer());
-            mouseController.setBody(world.getPlayer());
             // show the new world in the view
             view.setWorld(world);
-
-            world.start();}
-else {
+            world.addStepListener(new Tracker(view, world.getPlayer()));
+            world.start();
+        } else {
             level++;
             // get a new world
             world = new Level3();
             // fill it with bodies
             world.populate(this);
+            mouseController.setBody(bullet);
+            frame.addMouseListener(mouseController);
+            frame.addKeyListener(controller);
             // switch the keyboard control to the new player
             controller.setBody(world.getPlayer());
-            mouseController.setBody(world.getPlayer());
+            //mouseController.setBody(world.getPlayer());
             // show the new world in the view
             view.setWorld(world);
+            world.addStepListener(new Tracker(view, world.getPlayer()));
 
             world.start();
         }
 
     }
 
-    public void sneakPeek() {
-        world.stop();
-
-            if (level==1){
-            // get a new world
-            world = new Level1();
-            // fill it with bodies
-            world.populate(this);
-            // switch the keyboard control to the new player
-            controller.setBody(world.getPlayer());
-            mouseController.setBody(world.getPlayer());
-            // show the new world in the view
-            view.setWorld(world);
-
-            world.start();}
-            else if (level==2){
-            // get a new world
-            world = new Level2();
-            // fill it with bodies
-            world.populate(this);
-            // switch the keyboard control to the new player
-            controller.setBody(world.getPlayer());
-            mouseController.setBody(world.getPlayer());
-            // show the new world in the view
-            view.setWorld(world);
-
-            world.start();}
-            
-            else if (level==3){
-            // get a new world
-            world = new Level3();
-            // fill it with bodies
-            world.populate(this);
-            // switch the keyboard control to the new player
-            controller.setBody(world.getPlayer());
-            mouseController.setBody(world.getPlayer());
-            // show the new world in the view
-            view.setWorld(world);
-
-            world.start();}
-
-
-        
+    public int getLevel() {
+        return level;
     }
 
     /**
@@ -192,4 +160,11 @@ else {
         new Game();
     }
 
+    public World getWorld() {
+        return world;
+    }
+
+    public void nomusic() {
+        gameMusic.stop();
+    }
 }

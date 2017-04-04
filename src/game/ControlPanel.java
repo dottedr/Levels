@@ -6,6 +6,7 @@
 package game;
 
 import city.cs.engine.World;
+import java.awt.Font;
 
 /**
  *
@@ -36,8 +37,13 @@ public class ControlPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         buttonSneakPeek = new javax.swing.JButton();
         quitButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+
+        jScrollPane1.setViewportView(jTextPane1);
 
         buttonSneakPeek.setText("SneekPeek");
         buttonSneakPeek.addActionListener(new java.awt.event.ActionListener() {
@@ -53,6 +59,13 @@ public class ControlPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Mute     ");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,17 +78,21 @@ public class ControlPanel extends javax.swing.JPanel {
                         .addComponent(quitButton)
                         .addGap(76, 76, 76))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(buttonSneakPeek)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonSneakPeek)
+                            .addComponent(jButton1))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(23, 23, 23)
                 .addComponent(buttonSneakPeek)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addGap(17, 17, 17)
                 .addComponent(quitButton)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -86,12 +103,22 @@ public class ControlPanel extends javax.swing.JPanel {
 
     private void buttonSneakPeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSneakPeekActionPerformed
         // TODO add your handling code here:
-            game.sneakPeek();
+            game.goNextLevel();
+            
     }//GEN-LAST:event_buttonSneakPeekActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        game.nomusic();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonSneakPeek;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JButton quitButton;
     // End of variables declaration//GEN-END:variables
 }

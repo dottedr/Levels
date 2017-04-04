@@ -15,8 +15,6 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  */
 public class Fly extends StaticBody {
    
- 
-
     public Fly(World w) {
         super(w);
         

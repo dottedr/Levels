@@ -6,27 +6,38 @@
 package game;
 
 import city.cs.engine.*;
-import org.jbox2d.common.Vec2;
+import java.io.IOException;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
  * @author sabinaadamska
  */
-public class Eat implements CollisionListener{
+public class Eat implements CollisionListener {
 
     private final Pepe pepe;
-    
-    public Eat(Pepe pepe){
-        this.pepe=pepe;
+    private SoundClip gameSound;
+
+    public Eat(Pepe pepe) {
+        this.pepe = pepe;
     }
 
     @Override
     public void collide(CollisionEvent ce) {
-        
+
         if (ce.getOtherBody() == pepe) {
             pepe.incrementFlyCount();
             ce.getReportingBody().destroy();
+
+            try {
+                gameSound = new SoundClip("data/cartoon.wav");  
+                gameSound.play();
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                System.out.println(e);
+            }
         }
+
     }
-    
+
 }
