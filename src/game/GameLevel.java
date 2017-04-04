@@ -32,7 +32,7 @@ public abstract class GameLevel extends World{
         portal.addCollisionListener(new PortalListener(game));
         portal.setFillColor(magic);
         bullet = new Bullet(this);
-        bullet.setPosition(new Vec2(25,0));
+        bullet.setPosition(new Vec2(25,-5));
     }
     public abstract Vec2 startPosition();
     public abstract Vec2 doorPosition();

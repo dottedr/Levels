@@ -25,6 +25,7 @@ public class MyView extends UserView {
     private Image over;
     private Game game;
     private World world;
+    private Level3 level3;
 
     public MyView(World world, Game game, int width, int height) {
         super(world, width, height);
@@ -46,12 +47,12 @@ public class MyView extends UserView {
         over = new ImageIcon("data/over.jpg").getImage();
 
         if (hp > 0) {
-            g.drawString("Score: " + game.getPlayer().getFlyCount() + "/10", 10, 20);
+            g.drawString("Score: " + game.getPlayer().getFlyCount() , 10, 20);
             g.drawString("HP:" + hp, 10, 40);
         } else {
             g.drawImage(over, 0, 0, this);
-            g.drawString("Score: " + game.getPlayer().getFlyCount() + "/100", 10, 20);
-            g.drawString("Score: " + hp, 10, 60);
+            g.drawString("Score: " + game.getPlayer().getFlyCount(), 10, 20);
+            g.drawString("Healh: " + hp, 10, 60);
 
         }
 

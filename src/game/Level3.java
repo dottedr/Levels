@@ -29,24 +29,28 @@ public class Level3 extends GameLevel{
         super.populate(game);
         khaki= new Color(105,94,24);
         
-//        //fork curvy
-//        Body curvyfork = new CurvyFork(this);
-//        curvyfork.setPosition(new Vec2(6,300));
-//        curvyfork.addCollisionListener(new PiranhaHit(getPlayer()));
-//        
-//        //fork curvy
-//        Body curvyfork2 = new CurvyFork(this);
-//        curvyfork2.setPosition(new Vec2(-6,1000));
-//        curvyfork2.addCollisionListener(new PiranhaHit(getPlayer()));
-//        
-//        //fork curvy
-//        Body curvyfork3 = new CurvyFork(this);
-//        curvyfork3.setPosition(new Vec2(25,100));
-//        curvyfork3.addCollisionListener(new PiranhaHit(getPlayer()));
+        //fork curvy
+        Body curvyfork = new CurvyFork(this);
+        curvyfork.setPosition(new Vec2(6,300));
+        curvyfork.addCollisionListener(new PiranhaHit(getPlayer()));
+        curvyfork.addCollisionListener(new PiranhaFight(bullet));
+        
+        //fork curvy
+        Body curvyfork2 = new CurvyFork(this);
+        curvyfork2.setPosition(new Vec2(-6,1000));
+        curvyfork2.addCollisionListener(new PiranhaHit(getPlayer()));
+        curvyfork2.addCollisionListener(new PiranhaFight(bullet));
+        
+        //fork curvy
+        Body curvyfork3 = new CurvyFork(this);
+        curvyfork3.setPosition(new Vec2(25,100));
+        curvyfork3.addCollisionListener(new PiranhaHit(getPlayer()));
+        curvyfork3.addCollisionListener(new PiranhaFight(bullet));
 //        
         Body piranha = new Piranha(this);
         piranha.setPosition(new Vec2(0,-8));
         piranha.addCollisionListener(new PiranhaFight(bullet));
+        piranha.addCollisionListener(new PiranhaHit(getPlayer()));
         
         //fly
         for (int i = 1; i < 4; i++) {
@@ -97,6 +101,9 @@ public class Level3 extends GameLevel{
     @Override
     public boolean isCompleted() {
         return getPlayer().getFlyCount() == 3;
+    }
+    public int score(){
+    return 3;
     }
 }
 

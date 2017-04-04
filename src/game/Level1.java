@@ -43,10 +43,12 @@ public class Level1 extends GameLevel{
         Body stork = new Stork(this);
         stork.setPosition(new Vec2(-9,0));
         stork.addCollisionListener(new EnemyCollision(getPlayer()));
+        stork.addCollisionListener(new PiranhaFight(bullet));
         
         Body stork2 = new Stork(this);
         stork2.setPosition(new Vec2(5,0));
         stork2.addCollisionListener(new EnemyCollision(getPlayer()));
+        stork2.addCollisionListener(new PiranhaFight(bullet));
         
         //wall
         Shape obstacleWallShape = new BoxShape(0.5f, 5);

@@ -56,10 +56,6 @@ public class Game {
         frame = new JFrame("Pepe game");
         view = new MyView(world, this, 650, 500);
 
-        //add bottom panel
-        //UserView wideView = new UserView(world, 1300, 100);
-        //wideView.setZoom(4);
-        //frame.add(wideView, BorderLayout.SOUTH);
         //add side panel       
         Container sidePanel = new ControlPanel(world, pepe, this);
         frame.add(sidePanel, BorderLayout.EAST);
@@ -115,36 +111,55 @@ public class Game {
 
         } else if (level == 1) {
             level++;
+           
             // get a new world
             world = new Level2();
             // fill it with bodies
             world.populate(this);
-            mouseController.setBody(bullet);
-            frame.addMouseListener(mouseController);
+             bullet = world.getBullet();
+
             // switch the keyboard control to the new player
             frame.addKeyListener(controller);
             controller.setBody(world.getPlayer());
             // show the new world in the view
             view.setWorld(world);
             world.addStepListener(new Tracker(view, world.getPlayer()));
+            frame.requestFocus();
+            
+            mouseController = new MouseEvents(bullet);
+            frame.addMouseListener(mouseController);
             world.start();
-        } else {
+
+        } else  if (level == 2) {
             level++;
+            bullet = world.getBullet();
             // get a new world
             world = new Level3();
             // fill it with bodies
             world.populate(this);
-            mouseController.setBody(bullet);
+            bullet = world.getBullet();
+
             frame.addMouseListener(mouseController);
+            mouseController.setBody(bullet);
             frame.addKeyListener(controller);
             // switch the keyboard control to the new player
             controller.setBody(world.getPlayer());
-            //mouseController.setBody(world.getPlayer());
+
             // show the new world in the view
             view.setWorld(world);
             world.addStepListener(new Tracker(view, world.getPlayer()));
-
+            frame.requestFocus();
             world.start();
+        }
+         else  if (level == 3) {
+            //level++;
+
+            System.exit(0);
+        }
+        else  if ((level == 3)&& pepe.getFlyCount()!=0) {
+            //level++;
+
+            System.out.println("GG mate");
         }
 
     }

@@ -25,8 +25,7 @@ public class MouseEvents extends MouseAdapter {
     @Override
     public void mousePressed(MouseEvent e) {
         System.out.println(bullet);
-        //bullet.setPosition(new Vec2(26,5));
-        bullet.setLinearVelocity(new Vec2(-10, 0));
+        bullet.setLinearVelocity(new Vec2(-10, 10));
         
 
     }

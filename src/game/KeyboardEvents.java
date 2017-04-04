@@ -30,14 +30,14 @@ public class KeyboardEvents extends KeyAdapter {
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
-        if (code == KeyEvent.VK_S) {
+        if (code == KeyEvent.VK_D) {
             body.startWalking(WALKING_SPEED);
             // body.addImage(new BodyImage("data/frogJump.png",6));
 
         } else if (code == KeyEvent.VK_A) {
             body.startWalking(-WALKING_SPEED);
             //body.addImage(new BodyImage("data/frogJump.png",6));
-        } else if (code == KeyEvent.VK_1) {
+        } else if (code == KeyEvent.VK_W) {
             //body.getShape();
             body.jump(JUMPING_SPEED);
         } 
