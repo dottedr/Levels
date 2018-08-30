@@ -15,7 +15,7 @@ import city.cs.engine.World;
 import org.jbox2d.common.Vec2;
 
 /**
- *
+ * Walker, player, eats flies, looses points when is hit by an enemy
  * @author sabinaadamska
  */
 public class Pepe extends Walker {
@@ -23,12 +23,19 @@ public class Pepe extends Walker {
     private Shape shape;
     private int flyCount;
     private int hp;
-    private String win;
-    private String lost;
-    private World world;
 
+    private String lost;
+
+    /**
+     * Constructor of the Pepe class
+     *
+     * @param world inherited world
+     */
     public Pepe(World world) {
         super(world);
+        /**
+         *Pepe's properties
+         */
         flyCount = 0;
         hp = 100;
 
@@ -48,37 +55,33 @@ public class Pepe extends Walker {
         addImage(new BodyImage("data/frogSit.png", 6));
 
     }
-
+/**
+ * 
+ * @return getHP Pepe's health points
+ */
     public int getHP() {
         return hp;
     }
-
-
+/**
+ * increments number of eaten flies, increased score
+ */
     public void incrementFlyCount() {
         flyCount++;
 
     }
-
+/**
+ * decrements Pepe's health points 
+ */
     public void decrementHP() {
         hp = hp - 20;
 
     }
-
-    public String printLost() {
-        return lost;
-    }
-
+/**
+ * 
+ * @return flyCount return number of eaten flies
+ */
     public int getFlyCount() {
         return flyCount;
-    }
-
-    public Shape getShape() {
-        return shape;
-    }
-
-    public Vec2 position() {
-        return this.getPosition();
-
     }
 
 }

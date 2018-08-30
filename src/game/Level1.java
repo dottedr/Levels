@@ -15,18 +15,23 @@ import java.awt.Color;
 import org.jbox2d.common.Vec2;
 
 /**
- *
+ * First level
  * @author sabinaadamska
  */
 public class Level1 extends GameLevel{
-    public Color khaki,magic;
-   // private Pepe pepe;
-   // public Bullet bullet;
-    
+    public Color khaki;
+
+    /** 
+     * @param game that game being populated by elements from level1
+     */
+
     
     @Override
     public void populate(Game game){
         super.populate(game);
+       /**
+        * @param khaki color of the platform
+        */
         khaki= new Color(105,94,24);
 
         //fly
@@ -35,10 +40,7 @@ public class Level1 extends GameLevel{
             fly.setPosition(new Vec2(i*6-25,i*-1.1f));
             fly.addCollisionListener(new Eat(getPlayer()));
         }
-        //bullet= new Bullet(this);
-        
-       
-        
+
         //stork
         Body stork = new Stork(this);
         stork.setPosition(new Vec2(-9,0));

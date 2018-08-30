@@ -15,8 +15,9 @@ import city.cs.engine.StaticBody;
 import city.cs.engine.World;
 
 /**
- *
+ *One of the enemies. Appears only in Level3.
  * @author sabinaadamska
+ * 
  */
 public class CurvyFork extends DynamicBody{
 

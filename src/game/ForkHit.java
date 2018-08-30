@@ -9,7 +9,7 @@ import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
 
 /**
- *
+ * Class designed as collision between Pepe and fork
  * @author sabinaadamska
  */
 public class ForkHit implements CollisionListener{

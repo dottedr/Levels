@@ -9,7 +9,7 @@ import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
 
 /**
- *
+ * Collision listener waiting for Pepe to get to the portal
  * @author sabinaadamska
  */
 public class PortalListener implements CollisionListener {

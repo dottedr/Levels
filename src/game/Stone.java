@@ -12,7 +12,7 @@ import city.cs.engine.SolidFixture;
 import city.cs.engine.World;
 
 /**
- *
+ * Portal to another level
  * @author sabinaadamska
  */
 public class Stone extends DynamicBody{

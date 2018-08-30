@@ -8,7 +8,7 @@ package game;
 import city.cs.engine.*;
 
 /**
- *
+ * Class designed for collision between Piranha and Pepe
  * @author sabinaadamska
  */
 public class PiranhaHit implements CollisionListener {
@@ -24,7 +24,6 @@ public class PiranhaHit implements CollisionListener {
 
         if (ce.getOtherBody() == pepe) {
             pepe.decrementHP();
-            //ce.getReportingBody().destroy();
             
         }
     }

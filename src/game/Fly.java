@@ -10,8 +10,9 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 /**
- *
+ * Pepe's food, when he "eats" Fly he gets points
  * @author sabinaadamska
+ * 
  */
 public class Fly extends StaticBody {
    

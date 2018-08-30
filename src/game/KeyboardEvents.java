@@ -11,7 +11,7 @@ import java.awt.event.KeyEvent;
 import org.jbox2d.common.Vec2;
 
 /**
- *
+ * A keyboard listener.
  * @author sabinaadamska
  */
 public class KeyboardEvents extends KeyAdapter {
@@ -21,39 +21,44 @@ public class KeyboardEvents extends KeyAdapter {
 
     private Walker body;
    
-
+/**
+     * Initialize the listener.
+     * @param body the component that will react to keyPressed() and keyReleased().
+     */
     public KeyboardEvents(Walker body) {
         this.body = body;
      
     }
-
+    /**
+     * Called when the key is pressed.
+     * @param e description of key pressed event
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
         if (code == KeyEvent.VK_D) {
             body.startWalking(WALKING_SPEED);
-            // body.addImage(new BodyImage("data/frogJump.png",6));
 
         } else if (code == KeyEvent.VK_A) {
             body.startWalking(-WALKING_SPEED);
-            //body.addImage(new BodyImage("data/frogJump.png",6));
+            
         } else if (code == KeyEvent.VK_W) {
-            //body.getShape();
             body.jump(JUMPING_SPEED);
         } 
 
 
     }
-
+    /**
+     * Called when the key is released.
+     * @param e description of key released event
+     */
     @Override
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();
         if (code == KeyEvent.VK_S) {
-            body.stopWalking();
-            // body.addImage(new BodyImage("data/frogSit.png",6));
+            body.stopWalking();       
         } else if (code == KeyEvent.VK_A) {
             body.stopWalking();
-            //body.addImage(new BodyImage("data/frogSit.png",6));
         }
     }
 

@@ -8,7 +8,7 @@ package game;
 import city.cs.engine.*;
 
 /**
- *
+ * Collision listener for Piranha hitting the bullet/book
  * @author sabinaadamska
  */
 public class PiranhaFight implements CollisionListener {
@@ -22,9 +22,7 @@ public class PiranhaFight implements CollisionListener {
     @Override
     public void collide(CollisionEvent ce) {
 
-        if (ce.getOtherBody() == bullet) {
-//            bullet.decrementHP();
-           // System.out.println(getReportingBody());
+        if (ce.getOtherBody() == bullet) {  
             ce.getReportingBody().destroy();
 
         }

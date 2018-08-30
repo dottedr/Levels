@@ -10,13 +10,15 @@ import java.awt.event.MouseEvent;
 import org.jbox2d.common.Vec2;
 
 /**
- *
+ * This class waits for mouse to be clicked to perform actions listed below
  * @author sabinaadamska
  */
 public class MouseEvents extends MouseAdapter {
-
+/**
+ * @param bullet bullet that is being moved when the mouse is clicked
+ */
     private Bullet bullet;
-    //private static final float JUMPING_SPEED = 12;
+    
 
     public MouseEvents(Bullet bullet) {
         this.bullet = bullet;

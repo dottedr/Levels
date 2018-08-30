@@ -9,17 +9,26 @@ import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
 
 /**
- *
+ *This class describes what happens when Pepe hits an enemy.
  * @author sabinaadamska
+ * 
  */
 public class EnemyCollision implements CollisionListener {
     private Pepe pepe;
-
+    /**
+     * Constructor for objects of class EnemyCollision.
+     * @param pepe  object that is colliding with other objects
+     * 
+     */
     public EnemyCollision(Pepe pepe){
         this.pepe=pepe;
     }
-
-
+    
+    /**
+     * Decrement pepe's HP and rotate enemy.
+     * @param e 
+     * 
+     * */
     @Override
     public void collide(CollisionEvent e){
         if(e.getOtherBody() == pepe){

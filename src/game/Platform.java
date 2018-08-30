@@ -8,7 +8,7 @@ package game;
 import city.cs.engine.*;
 import city.cs.engine.SolidFixture;
 /**
- *
+ *Simple platform 
  * @author sabinaadamska
  */
 public class Platform extends StaticBody {
@@ -19,7 +19,6 @@ public class Platform extends StaticBody {
 
         Shape platformShape = new BoxShape(2, 0.5f);
         Fixture platformFixture = new SolidFixture(this, platformShape);
-        //platformFixture.setFriction(1);
-        
+
     }
 }

@@ -9,8 +9,9 @@ import city.cs.engine.World;
 import java.awt.Font;
 
 /**
- *
+ *Side panel that is being displayed all the time.
  * @author sabinaadamska
+ * 
  */
 public class ControlPanel extends javax.swing.JPanel {
 
@@ -48,7 +49,7 @@ public class ControlPanel extends javax.swing.JPanel {
 
         jScrollPane1.setViewportView(jTextPane1);
 
-        buttonSneakPeek.setText("SneekPeek");
+        buttonSneakPeek.setText("SneakPeek");
         buttonSneakPeek.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSneakPeekActionPerformed(evt);

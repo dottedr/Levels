@@ -15,7 +15,7 @@ import city.cs.engine.World;
 
 /**
  *
- * @author sabinaadamska
+ * Walker's weapon. Walker will use that to destroy enemies.
  */
 public class Bullet extends DynamicBody {
    

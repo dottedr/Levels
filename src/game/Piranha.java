@@ -9,11 +9,13 @@ import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
 
 /**
- *
+ * Pepe's enemy in level2 and level3
  * @author sabinaadamska
  */
 public class Piranha extends DynamicBody {
-
+/**
+ * Pepe's enemy
+ */
     Vec2 g = new Vec2(10, 0);
 
     public Piranha(World w) {

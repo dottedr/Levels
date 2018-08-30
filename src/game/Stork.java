@@ -14,7 +14,7 @@ import city.cs.engine.StaticBody;
 import city.cs.engine.World;
 
 /**
- *
+ * Enemy in the level1
  * @author sabinaadamska
  */
 public class Stork extends StaticBody {

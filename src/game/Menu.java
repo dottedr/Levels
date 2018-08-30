@@ -6,7 +6,7 @@
 package game;
 
 /**
- *
+ * Start menu that appears when we run the game. Then it redirects to the game
  * @author sabinaadamska
  */
 public class Menu extends javax.swing.JFrame {
@@ -247,13 +247,19 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * 
+ * @param evt event of clicking the button
+ */
     private void StartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartButtonActionPerformed
         // TODO add your handling code here:
         new Game();
         this.dispose();
     }//GEN-LAST:event_StartButtonActionPerformed
-
+/**
+ * 
+ * @param evt event of clicking the button
+ */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         parentPanel.removeAll();
@@ -261,7 +267,10 @@ public class Menu extends javax.swing.JFrame {
         parentPanel.repaint();
         parentPanel.revalidate();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+/**
+ * 
+ * @param evt event of clicking the button
+ */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         parentPanel.removeAll();

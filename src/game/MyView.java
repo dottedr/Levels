@@ -14,7 +14,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 /**
- *
+ * User view of the game, contains paintForeground and paintBackground
  * @author sabinaadamska
  */
 public class MyView extends UserView {
@@ -24,8 +24,14 @@ public class MyView extends UserView {
     private Image background3;
     private Image over;
     private Game game;
-    private World world;
-    private Level3 level3;
+
+    /**
+     * 
+     * @param world inherited world
+     * @param game inherited game
+     * @param width with of the frame inherited from game 
+     * @param height height of the frame inherited from game 
+     */
 
     public MyView(World world, Game game, int width, int height) {
         super(world, width, height);
@@ -36,7 +42,10 @@ public class MyView extends UserView {
         this.game = game;
 
     }
-
+/**
+ * 
+ * @param g graphics that is being drawn on the foreground
+ */
     @Override
     protected void paintForeground(Graphics2D g) {
         Font comicSans = new Font("Verdana", Font.BOLD, 20);
@@ -57,11 +66,16 @@ public class MyView extends UserView {
         }
 
     }
-
+/**
+ * 
+ * @param g graphics that is being drawn in the background
+ */
     @Override
     protected void paintBackground(Graphics2D g) {
         int level = game.getLevel();
-
+/**
+ * background image depends on the level
+ */
         if (level == 1) {
             g.drawImage(background, 0, 0, this);
         } else if (level == 2) {

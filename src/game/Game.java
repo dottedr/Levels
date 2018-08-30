@@ -178,7 +178,9 @@ public class Game {
     public World getWorld() {
         return world;
     }
-
+/**
+ * Method to stop the music in the game
+ */
     public void nomusic() {
         gameMusic.stop();
     }
